@@ -18,7 +18,7 @@ jobs:
     - run: mkdir -p ~/rpmbuild/SOURCES
     - run: rpmbuild --undefine=_disable_source_fetch --define '_unitdir /usr/lib/systemd/system' --define 'dist .${{ matrix.dist }}' -ba slurm-job-exporter.spec
     - run: mkdir ~/output
-    - run: mv ~/rpmbuild/RPMS/slurm-job-exporter-*.rpm ~/output
+    - run: mv ~/rpmbuild/RPMS/noarch/*.rpm ~/output
     
     - name: Release
       uses: softprops/action-gh-release@v1
