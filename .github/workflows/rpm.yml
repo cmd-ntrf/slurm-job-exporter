@@ -17,11 +17,8 @@ jobs:
     - run: sudo apt install rpm file curl
     - run: mkdir -p ~/rpmbuild/SOURCES
     - run: rpmbuild --undefine=_disable_source_fetch --define '_unitdir /usr/lib/systemd/system' --define 'dist .${{ matrix.dist }}' -ba slurm-job-exporter.spec
-    - run: mkdir ~/output
-    - run: mv ~/rpmbuild/RPMS/noarch/*.rpm ~/output
-    
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ~/output/*.rpm
+        files: ~/rpmbuild/RPMS/noarch/*
