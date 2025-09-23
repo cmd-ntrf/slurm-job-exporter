@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: sudo apt install rpm file curl
+    - run: mkdir -p ~/rpmbuild/SOURCES
     - run: rpmbuild --undefine=_disable_source_fetch --define '_unitdir /usr/lib/systemd/system' --define 'dist .${{ matrix.dist }}' -ba slurm-job-exporter.spec
     - run: mkdir ~/output
     - run: mv ~/rpmbuild/RPMS/slurm-job-exporter-*.rpm ~/output
