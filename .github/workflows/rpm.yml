@@ -21,4 +21,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ~/rpmbuild/RPMS/noarch/*
+        files: /home/runner/rpmbuild/RPMS/noarch/*
